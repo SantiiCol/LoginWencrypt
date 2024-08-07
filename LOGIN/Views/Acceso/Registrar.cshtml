@@ -1,0 +1,187 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <img src="~/img/Perfil.png" alt="Perfil" class="profile-img">
+            <form action="@Url.Action("Registrar", "Acceso") " method="post">
+                <div class="form-group">
+                    <label for="username"></label>
+                    <input type="text" class="input" id="username" name="NombreUsuario" placeholder="NOMBRE DE USUARIO" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo"></label>
+                    <input type="email" class="input" id="correo" name="Correo" placeholder="CORREO ELECTRONICO" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"></label>
+                    <input type="password" class="input" id="password" name="Clave" placeholder="CONTRASEÑA" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"></label>
+                    <input type="password" class="input" id="password" name="ConfirmarClave" placeholder="CONFIRMAR CONTRASEÑA" required>
+                </div>
+                @if (ViewData["Mensaje"] != null)
+                {
+                    <div class="alert alert-danger">@ViewData["Mensaje"]</div>
+                }
+                <button class="button" type="submit">Registrarse</button>
+            </form>
+            <div class="login-link">
+                ¿Ya tienes una cuenta? - <a href="@Url.Action("Login", "Acceso")">Iniciar Sesión</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #B3E2A7;
+    }
+
+    .register-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+
+    .register-box {
+        background-color: #80B9AD;
+        border-radius: 10px;
+        padding: 30px 50px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 80px; /* Ajusta el tamaño según sea necesario */
+        height: 80px; /* Ajusta el tamaño según sea necesario */
+        margin-bottom: 20px; /* Espaciado entre la imagen y el formulario */
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #538392;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #6295A2;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+            .form-group input:focus {
+                outline: none;
+                border-color: #538392;
+            }
+
+    .input {
+        border: none;
+        outline: none;
+        border-radius: 15px;
+        padding: 1em;
+        background-color: #ccc;
+        box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+        transition: 300ms ease-in-out;
+    }
+
+        .input:focus {
+            background-color: white;
+            transform: scale(1.05);
+            box-shadow: 13px 13px 100px #969696, -13px -13px 100px #ffffff;
+        }
+
+    .button {
+        width: 70%;
+        padding: 0.5em 1em;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: #2c9caf;
+        transition: all 1000ms;
+        font-size: 15px;
+        position: relative;
+        overflow: hidden;
+        outline: 2px solid #2c9caf;
+    }
+
+    button:hover {
+        color: #ffffff;
+        transform: scale(1.1);
+        outline: 2px solid #70bdca;
+        box-shadow: 4px 5px 17px -4px #268391;
+    }
+
+    button::before {
+        content: "";
+        position: absolute;
+        left: -50px;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background-color: #2c9caf;
+        transform: skewX(45deg);
+        z-index: -1;
+        transition: width 1000ms;
+    }
+
+    button:hover::before {
+        width: 250%;
+    }
+
+    .login-link {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    /* Mensaje de error estilos*/
+
+    .alert {
+        margin-top: 15px; /* Espacio entre el input y el mensaje de error */
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px 10px;
+        border-color: #f5c6cb;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        width: 90%;
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid #f5c6cb;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+</style>
